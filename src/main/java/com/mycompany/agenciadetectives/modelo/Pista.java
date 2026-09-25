@@ -14,17 +14,17 @@ public class Pista {
         // Validar todos los datos antes de asignarlos.
         if (codigo == null || codigo.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El código de la pista no puede estar vacío.");
+                    "El codigo de la pista no puede estar vacío.");
         }
 
         if (descripcion == null || descripcion.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "La descripción de la pista no puede estar vacía.");
+                    "La descripcion de la pista no puede estar vacía.");
         }
 
         if (tipoEvidencia == null || tipoEvidencia.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El tipo de evidencia no puede estar vacío.");
+                    "El tipo de evidencia no puede estar vacio.");
         }
 
         if (nivelImportancia < 1 || nivelImportancia > 10) {
@@ -70,12 +70,12 @@ public class Pista {
         // Validar todos los nuevos valores antes de modificar la pista.
         if (descripcion == null || descripcion.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "La descripción de la pista no puede estar vacía.");
+                    "La descripcion de la pista no puede estar vacia.");
         }
 
         if (tipoEvidencia == null || tipoEvidencia.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El tipo de evidencia no puede estar vacío.");
+                    "El tipo de evidencia no puede estar vacio.");
         }
 
         if (nivelImportancia < 1 || nivelImportancia > 10) {

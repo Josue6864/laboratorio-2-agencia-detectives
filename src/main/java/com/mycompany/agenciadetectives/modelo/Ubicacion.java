@@ -14,17 +14,17 @@ public class Ubicacion {
         // Validar todos los datos antes de asignarlos.
         if (codigo == null || codigo.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El código de la ubicación no puede estar vacío.");
+                    "El codigo de la ubicacion no puede estar vacio.");
         }
 
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El nombre de la ubicación no puede estar vacío.");
+                    "El nombre de la ubicacion no puede estar vacio.");
         }
 
         if (direccion == null || direccion.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "La dirección o descripción del lugar no puede estar vacía.");
+                    "La direccion o descripcion del lugar no puede estar vacia.");
         }
 
         if (nivelRiesgo < 1 || nivelRiesgo > 10) {
@@ -34,7 +34,7 @@ public class Ubicacion {
 
         if (estado == null || estado.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El estado de la ubicación no puede estar vacío.");
+                    "El estado de la ubicacion no puede estar vacio.");
         }
 
         this.codigo = codigo.trim();
@@ -74,7 +74,7 @@ public class Ubicacion {
 
         if (estado == null || estado.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El estado de la ubicación no puede estar vacío.");
+                    "El estado de la ubicacion no puede estar vacio.");
         }
 
         this.nivelRiesgo = nivelRiesgo;
@@ -83,9 +83,9 @@ public class Ubicacion {
 
     @Override
     public String toString() {
-        return "Código: " + codigo
+        return "Codigo: " + codigo
                 + "\nNombre: " + nombre
-                + "\nDirección o descripción: " + direccion
+                + "\nDirección o descripcion: " + direccion
                 + "\nNivel de riesgo: " + nivelRiesgo
                 + "\nEstado: " + estado;
     }

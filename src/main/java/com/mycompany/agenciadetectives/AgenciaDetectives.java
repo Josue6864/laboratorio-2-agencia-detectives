@@ -37,7 +37,7 @@ public class AgenciaDetectives {
                 mostrarMenu();
 
                 try {
-                    opcion = leerEntero("Selecciona una opción: ");
+                    opcion = leerEntero("Selecciona una opcion: ");
                     ejecutarOpcion(opcion);
 
                 } catch (IllegalArgumentException | IllegalStateException e) {
@@ -49,7 +49,7 @@ public class AgenciaDetectives {
 
         } catch (NoSuchElementException e) {
             System.out.println(
-                    "\nLa entrada se ha cerrado. El programa finalizará.");
+                    "\nLa entrada se ha cerrado. El programa finalizara.");
 
         } finally {
             // Se cierra el lector cuando termina la sesión completa.
@@ -58,19 +58,19 @@ public class AgenciaDetectives {
     }
 
     private void mostrarMenu() {
-        System.out.println("\n========== MENÚ PRINCIPAL ==========");
+        System.out.println("\n========== MENU PRINCIPAL ==========");
         System.out.println("1. Nuevo caso");
-        System.out.println("2. Registrar ubicación");
+        System.out.println("2. Registrar ubicacion");
         System.out.println("3. Consultar ubicaciones");
-        System.out.println("4. Consultar una ubicación");
-        System.out.println("5. Modificar ubicación");
-        System.out.println("6. Descartar ubicación");
+        System.out.println("4. Consultar una ubicacion");
+        System.out.println("5. Modificar ubicacion");
+        System.out.println("6. Descartar ubicacion");
         System.out.println("7. Registrar pista");
         System.out.println("8. Consultar pistas");
         System.out.println("9. Buscar pista");
         System.out.println("10. Modificar pista");
         System.out.println("11. Eliminar pista");
-        System.out.println("12. Mostrar reporte de investigación");
+        System.out.println("12. Mostrar reporte de investigacion");
         System.out.println("13. Salir");
         System.out.println("====================================");
     }
@@ -91,19 +91,19 @@ public class AgenciaDetectives {
             }
 
             case 2: {
-                System.out.println("\n--- REGISTRAR UBICACIÓN ---");
+                System.out.println("\n--- REGISTRAR UBICACION ---");
 
-                int posicion = leerEntero("Posición del arreglo (0 a 4): ");
+                int posicion = leerEnteroEnRango("Posicion del arreglo (0 a 4): ", 0, 4);
 
                 if (casoActual.consultarUbicacion(posicion) != null) {
                     throw new IllegalStateException(
                             "La posición seleccionada ya está ocupada.");
                 }
 
-                String codigo = leerTexto("Código: ");
+                String codigo = leerTexto("Codigo: ");
                 String nombre = leerTexto("Nombre del lugar: ");
-                String direccion = leerTexto("Dirección o descripción: ");
-                int riesgo = leerEntero("Nivel de riesgo (1 a 10): ");
+                String direccion = leerTexto("Direccion o descripcion: ");
+                int riesgo = leerEnteroEnRango("Nivel de riesgo (1 a 10): ", 1,10);
                 String estado = leerTexto("Estado: ");
 
                 Ubicacion ubicacion = new Ubicacion(
@@ -113,7 +113,7 @@ public class AgenciaDetectives {
                 casoActual.registrarUbicacion(posicion, ubicacion);
 
                 System.out.println(
-                        "Ubicación registrada en la posición " + posicion + ".");
+                        "Ubicacion registrada en la posición " + posicion + ".");
                 break;
             }
 
@@ -121,7 +121,7 @@ public class AgenciaDetectives {
                 System.out.println("\n--- UBICACIONES REGISTRADAS ---");
 
                 if (casoActual.contarUbicaciones() == 0) {
-                    System.out.println("Todavía no hay ubicaciones registradas.");
+                    System.out.println("Todavia no hay ubicaciones registradas.");
                     break;
                 }
 
@@ -129,7 +129,7 @@ public class AgenciaDetectives {
 
                 for (int i = 0; i < ubicaciones.length; i++) {
                     if (ubicaciones[i] != null) {
-                        System.out.println("\nPosición del arreglo: " + i);
+                        System.out.println("\nPosicion del arreglo: " + i);
                         System.out.println(ubicaciones[i]);
                     }
                 }
@@ -138,14 +138,14 @@ public class AgenciaDetectives {
             }
 
             case 4: {
-                System.out.println("\n--- CONSULTAR UNA UBICACIÓN ---");
+                System.out.println("\n--- CONSULTAR UNA UBICACION ---");
 
-                int posicion = leerEntero("Posición del arreglo (0 a 4): ");
+                int posicion = leerEnteroEnRango("Posicion del arreglo (0 a 4): ",0,4);
                 Ubicacion ubicacion = casoActual.consultarUbicacion(posicion);
 
                 if (ubicacion == null) {
                     System.out.println(
-                            "La posición " + posicion + " está vacía.");
+                            "La posicion " + posicion + " esta vacia.");
                 } else {
                     System.out.println("\nPosición del arreglo: " + posicion);
                     System.out.println(ubicacion);
@@ -155,39 +155,39 @@ public class AgenciaDetectives {
             }
 
             case 5: {
-                System.out.println("\n--- MODIFICAR UBICACIÓN ---");
+                System.out.println("\n--- MODIFICAR UBICACION ---");
 
-                int posicion = leerEntero("Posición del arreglo (0 a 4): ");
+                int posicion = leerEnteroEnRango("Posicion del arreglo (0 a 4): ",0,4);
                 Ubicacion ubicacion = casoActual.consultarUbicacion(posicion);
 
                 if (ubicacion == null) {
                     throw new IllegalStateException(
-                            "No hay una ubicación registrada en esa posición.");
+                            "No hay una ubicacion registrada en esa posicion.");
                 }
 
-                System.out.println("\nInformación actual:");
+                System.out.println("\nInformacion actual:");
                 System.out.println(ubicacion);
 
-                int riesgo = leerEntero("\nNuevo nivel de riesgo (1 a 10): ");
+                int riesgo = leerEnteroEnRango("\nNuevo nivel de riesgo (1 a 10): ",1,10);
                 String estado = leerTexto("Nuevo estado: ");
 
                 casoActual.modificarUbicacion(posicion, riesgo, estado);
 
-                System.out.println("Ubicación modificada correctamente.");
+                System.out.println("Ubicacion modificada correctamente.");
                 break;
             }
 
             case 6: {
-                System.out.println("\n--- DESCARTAR UBICACIÓN ---");
+                System.out.println("\n--- DESCARTAR UBICACION ---");
 
-                int posicion = leerEntero("Posición del arreglo (0 a 4): ");
+                int posicion = leerEnteroEnRango("Posicion del arreglo (0 a 4): ",0,4);
 
                 if (casoActual.descartarUbicacion(posicion)) {
                     System.out.println(
-                            "Ubicación descartada. La posición quedó disponible.");
+                            "Ubicacion descartada. La posicion quedo disponible.");
                 } else {
                     System.out.println(
-                            "La posición indicada ya estaba vacía.");
+                            "La posicion indicada ya estaba vacia.");
                 }
 
                 break;
@@ -196,18 +196,18 @@ public class AgenciaDetectives {
             case 7: {
                 System.out.println("\n--- REGISTRAR PISTA ---");
 
-                String codigo = leerTexto("Código: ");
+                String codigo = leerTexto("Codigo: ");
 
                 if (casoActual.buscarPista(codigo) != null) {
                     throw new IllegalArgumentException(
-                            "Ya existe una pista con ese código.");
+                            "Ya existe una pista con ese codigo.");
                 }
 
-                String descripcion = leerTexto("Descripción: ");
+                String descripcion = leerTexto("Descripcion: ");
                 String tipo = leerTexto("Tipo de evidencia: ");
-                int importancia = leerEntero("Nivel de importancia (1 a 10): ");
-                int confiabilidad = leerEntero(
-                        "Nivel de confiabilidad (0 a 100): ");
+                int importancia = leerEnteroEnRango("Nivel de importancia (1 a 10): ",1,10);
+                int confiabilidad = leerEnteroEnRango(
+                        "Nivel de confiabilidad (0 a 100): ",0,100);
 
                 Pista pista = new Pista(
                         codigo, descripcion, tipo, importancia, confiabilidad
@@ -225,7 +225,7 @@ public class AgenciaDetectives {
                 ArrayList<Pista> pistas = casoActual.getPistas();
 
                 if (pistas.isEmpty()) {
-                    System.out.println("Todavía no hay pistas registradas.");
+                    System.out.println("Todavia no hay pistas registradas.");
                     break;
                 }
 
@@ -240,12 +240,12 @@ public class AgenciaDetectives {
             case 9: {
                 System.out.println("\n--- BUSCAR PISTA ---");
 
-                String codigo = leerTexto("Código de la pista: ");
+                String codigo = leerTexto("Codigo de la pista: ");
                 Pista pista = casoActual.buscarPista(codigo);
 
                 if (pista == null) {
                     System.out.println(
-                            "No se encontró una pista con ese código.");
+                            "No se encontro una pista con ese codigo.");
                 } else {
                     System.out.println("\nPista encontrada:");
                     System.out.println(pista);
@@ -257,24 +257,24 @@ public class AgenciaDetectives {
             case 10: {
                 System.out.println("\n--- MODIFICAR PISTA ---");
 
-                String codigo = leerTexto("Código de la pista: ");
+                String codigo = leerTexto("Codigo de la pista: ");
                 Pista pista = casoActual.buscarPista(codigo);
 
                 if (pista == null) {
                     System.out.println(
-                            "No se encontró una pista con ese código.");
+                            "No se encontro una pista con ese codigo.");
                     break;
                 }
 
-                System.out.println("\nInformación actual:");
+                System.out.println("\nInformacion actual:");
                 System.out.println(pista);
 
-                String descripcion = leerTexto("\nNueva descripción: ");
+                String descripcion = leerTexto("\nNueva descripcion: ");
                 String tipo = leerTexto("Nuevo tipo de evidencia: ");
-                int importancia = leerEntero(
-                        "Nuevo nivel de importancia (1 a 10): ");
-                int confiabilidad = leerEntero(
-                        "Nuevo nivel de confiabilidad (0 a 100): ");
+                int importancia = leerEnteroEnRango(
+                        "Nuevo nivel de importancia (1 a 10): ",1,10);
+                int confiabilidad = leerEnteroEnRango(
+                        "Nuevo nivel de confiabilidad (0 a 100): ",0,100);
 
                 boolean modificada = casoActual.modificarPista(
                         codigo, descripcion, tipo, importancia, confiabilidad
@@ -284,7 +284,7 @@ public class AgenciaDetectives {
                     System.out.println("Pista modificada correctamente.");
                 } else {
                     System.out.println(
-                            "No se encontró la pista que se quería modificar.");
+                            "No se encontro la pista que se quería modificar.");
                 }
 
                 break;
@@ -293,13 +293,13 @@ public class AgenciaDetectives {
             case 11: {
                 System.out.println("\n--- ELIMINAR PISTA ---");
 
-                String codigo = leerTexto("Código de la pista: ");
+                String codigo = leerTexto("Codigo de la pista: ");
 
                 if (casoActual.eliminarPista(codigo)) {
                     System.out.println("Pista eliminada correctamente.");
                 } else {
                     System.out.println(
-                            "No se encontró una pista con ese código.");
+                            "No se encontro una pista con ese código.");
                 }
 
                 break;
@@ -317,7 +317,7 @@ public class AgenciaDetectives {
 
             default: {
                 throw new IllegalArgumentException(
-                        "La opción del menú debe estar entre 1 y 13.");
+                        "La opcion del menu debe estar entre 1 y 13.");
             }
         }
     }
@@ -327,7 +327,7 @@ public class AgenciaDetectives {
         while (true) {
             try {
                 String nombre = leerTexto("Nombre del caso: ");
-                String codigo = leerTexto("Código del caso: ");
+                String codigo = leerTexto("Codigo del caso: ");
                 String detective = leerTexto("Detective responsable: ");
 
                 return new Caso(nombre, codigo, detective);
@@ -348,7 +348,6 @@ public class AgenciaDetectives {
             try {
                 int numero = scanner.nextInt();
 
-                // Consumir el resto de la línea antes de leer otro dato.
                 if (scanner.hasNextLine()) {
                     scanner.nextLine();
                 }
@@ -357,13 +356,28 @@ public class AgenciaDetectives {
 
             } catch (InputMismatchException e) {
                 System.out.println(
-                        "Entrada inválida. Debes ingresar un número entero.");
+                        "Entrada invalida. Debes ingresar un numero entero.");
 
                 // Eliminar la entrada incorrecta para poder reintentar.
                 if (scanner.hasNextLine()) {
                     scanner.nextLine();
                 }
             }
+        }
+    }
+
+    private int leerEnteroEnRango(String mensaje, int min, int max) {
+
+        while (true) {
+            int numero = leerEntero(mensaje);
+
+            if (numero < min || numero > max) {
+                System.out.println(
+                        "El valor debe estar entre " + min + " y " + max + ". Intenta de nuevo.");
+                continue;
+            }
+
+            return numero;
         }
     }
 
@@ -378,12 +392,12 @@ public class AgenciaDetectives {
                 return texto;
             }
 
-            System.out.println("Este dato no puede estar vacío.");
+            System.out.println("Este dato no puede estar vacio.");
         }
     }
 
     private void mostrarReporte() {
-        System.out.println("\n========== REPORTE DE INVESTIGACIÓN ==========");
+        System.out.println("\n========== REPORTE DE INVESTIGACION ==========");
         System.out.println(casoActual);
 
         System.out.println(
@@ -400,7 +414,7 @@ public class AgenciaDetectives {
             System.out.println("Ubicación con mayor riesgo: sin datos.");
         } else {
             System.out.println(
-                    "Ubicación con mayor riesgo: "
+                    "ubicacion con mayor riesgo: "
                     + mayorRiesgo.getNombre()
                     + " [" + mayorRiesgo.getCodigo() + "]"
                     + " - Riesgo: " + mayorRiesgo.getNivelRiesgo());

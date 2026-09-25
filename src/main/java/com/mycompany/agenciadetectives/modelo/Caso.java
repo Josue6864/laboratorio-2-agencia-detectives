@@ -16,18 +16,18 @@ public class Caso {
 
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El nombre del caso no puede estar vacío.");
+                    "El nombre del caso no puede estar vacio.");
         }
 
         if (codigo == null || codigo.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El código del caso no puede estar vacío.");
+                    "El codigo del caso no puede estar vacio.");
         }
 
         if (detectiveResponsable == null
                 || detectiveResponsable.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El nombre del detective no puede estar vacío.");
+                    "El nombre del detective no puede estar vacio.");
         }
 
         this.nombre = nombre.trim();
@@ -55,12 +55,12 @@ public class Caso {
 
         if (ubicacion == null) {
             throw new IllegalArgumentException(
-                    "La ubicación que se desea registrar no puede ser null.");
+                    "La ubicacion que se desea registrar no puede ser null.");
         }
 
         if (ubicaciones[posicion] != null) {
             throw new IllegalStateException(
-                    "La posición seleccionada ya tiene una ubicación.");
+                    "La posicion seleccionada ya tiene una ubicacion.");
         }
 
         ubicaciones[posicion] = ubicacion;
@@ -78,7 +78,7 @@ public class Caso {
 
         if (ubicacion == null) {
             throw new IllegalStateException(
-                    "No hay una ubicación registrada en esa posición.");
+                    "No hay una ubicación registrada en esa posicion.");
         }
 
         ubicacion.actualizar(nivelRiesgo, estado);
@@ -145,7 +145,7 @@ public class Caso {
 
         if (buscarIndicePista(pista.getCodigo()) != -1) {
             throw new IllegalArgumentException(
-                    "Ya existe una pista con el código "
+                    "Ya existe una pista con el codigo "
                     + pista.getCodigo() + ".");
         }
 
@@ -263,7 +263,7 @@ public class Caso {
 
         if (posicion < 0 || posicion >= ubicaciones.length) {
             throw new IllegalArgumentException(
-                    "La posición debe estar entre 0 y "
+                    "La posicion debe estar entre 0 y "
                     + (ubicaciones.length - 1) + ".");
         }
     }
@@ -272,7 +272,7 @@ public class Caso {
 
         if (codigo == null || codigo.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "El código de la pista no puede estar vacío.");
+                    "El codigo de la pista no puede estar vacio.");
         }
 
         String codigoBuscado = codigo.trim();
@@ -291,7 +291,7 @@ public class Caso {
     @Override
     public String toString() {
         return "Nombre del caso: " + nombre
-                + "\nCódigo del caso: " + codigo
+                + "\nCodigo del caso: " + codigo
                 + "\nDetective responsable: " + detectiveResponsable;
     }
 }
